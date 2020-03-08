@@ -1,14 +1,8 @@
 require_relative '../response'
+require_relative '../command'
 
 module Commands
-  class Default
-    def initialize(input)
-      @input = input
-    end
-
-    def execute
-    end
-
+  class Default < Command
     def responses
       [
         Response.new(
@@ -20,9 +14,5 @@ module Commands
         )
       ]
     end
-
-    private
-
-    attr_reader :input
   end
 end

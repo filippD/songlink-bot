@@ -1,4 +1,6 @@
 require_relative 'commands/default.rb'
+require_relative 'commands/null.rb'
+require_relative 'commands/send_song_links.rb'
 
 class Router
   def call(input)
@@ -8,9 +10,22 @@ class Router
   private
 
   def command(input)
-    case input.text
-    when 'test'
-      Commands::Default
-    end || Commands::Default
+    regex = Regexp.new(
+      'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)'
+    )
+    # song_sources = Regexp.new('youtube|soundcloud')
+
+    case input.chat.type
+    when 'private'
+      if input.text.match(regex)#.any? { |link| link.match(song_sources) }
+        Commands::SendSongLinks
+      else 
+        Commands::Default
+      end
+    when 'supergroup'
+      if input.text.match(regex)
+        Commands::SendSongLinks
+      end
+    end || Commands::Null
   end
 end

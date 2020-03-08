@@ -33,6 +33,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  faraday
   rake
   telegram-bot-ruby
 
