@@ -17,7 +17,7 @@ class Router
 
     case input.chat.type
     when 'private'
-      if input.text.match(regex)#.any? { |link| link.match(song_sources) }
+      if input.text.match(regex)
         Commands::SendSongLinks
       else 
         Commands::Default
