@@ -37,11 +37,19 @@ module Commands
     attr_reader :links_by_platforms
 
     def markup(platforms)
+      required_platforms = {
+        appleMusic: true,
+        youtubeMusic: true,
+        soundcloud: true,
+        youtube: true
+      }
       keyboard = platforms.map do |platform, url|
-        Telegram::Bot::Types::InlineKeyboardButton.new(
-          text: platform,
-          url: url['url']
-        )
+        if required_platforms[platform.to_sym]
+          Telegram::Bot::Types::InlineKeyboardButton.new(
+            text: platform,
+            url: url['url']
+          )
+        end
       end
 
       Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: keyboard)
