@@ -17,13 +17,13 @@ class Router
 
     case input.chat.type
     when 'private'
-      if input.text.match(regex)
+      if input.text&.match(regex)
         Commands::SendSongLinks
       else 
         Commands::Default
       end
     when 'supergroup'
-      if input.text.match(regex)
+      if input.text&.match(regex)
         Commands::SendSongLinks
       end
     end || Commands::Null
