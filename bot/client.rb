@@ -7,18 +7,18 @@ class Client
   def initialize
     @client = Telegram::Bot::Client.new(ENV['BOT_TOKEN'])
     @api = client.api
-    @logger = Logger.new("#{File.dirname(__FILE__)}/../log/bot.log")
+    # @logger = Logger.new("#{File.dirname(__FILE__)}/../log/bot.log")
   end
 
   def listen
     client.listen do |input|
-      logger.info(input)
+      # logger.info(input)
 
-      begin
-        yield(input)
-      rescue Telegram::Bot::Exceptions::ResponseError => e
-        logger.error(e.message)
-      end
+      # begin
+      yield(input)
+      # rescue Telegram::Bot::Exceptions::ResponseError => e
+        # logger.error(e.message)
+      # end
     end
   end
 
@@ -33,5 +33,5 @@ class Client
 
   private
 
-  attr_reader :client, :logger
+  attr_reader :client#, :logger
 end
