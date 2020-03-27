@@ -24,7 +24,7 @@ module Commands
         Response.new(
           :send_message,
             {
-              text: 'На нахуй',
+              text: response,
               chat_id: input.chat.id,
               reply_markup: markup(platform_link)
             }
@@ -53,6 +53,27 @@ module Commands
       end
 
       Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: keyboard)
+    end
+
+    def response
+      [
+        'Всех благ ежжи',
+        'Шааа!!!',
+        'Тааа!!!',
+        'Я падаю из пустоты в пустоту, дабы не потерять высоту',
+        'Весь мир будет против меня — я прав. Я одно это знаю, и это меня вдохновляет',
+        'Безделье — игрушка дьявола',
+        'Плотный салам, братья',
+        'Угаманис',
+        'КРАСИВО ДУШЕВНО',
+        'Братан',
+        'Мужик',
+        'Хопача',
+        'Огоооо',
+        'Я рядом, брат',
+        'Силен не тот, кто насрал, а кто не обосрался',
+        'Вы мне не запретите срать!'
+      ].sample
     end
   end
 end
