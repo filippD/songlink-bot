@@ -20,8 +20,8 @@ class Router
     when 'private'
       if input.text&.match(regex)
         Commands::SendSongLinks
-      elsif input.text&.match(thanks_regex)
-        Commands::Thanks
+      # elsif input.text&.match(thanks_regex)
+      #   Commands::Thanks
       else 
         Commands::Default
       end
