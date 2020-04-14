@@ -17,7 +17,7 @@ class Client
       # begin
       yield(input)
       # rescue Telegram::Bot::Exceptions::ResponseError => e
-        # logger.error(e.message)
+      #   logger.error(e.message)
       # end
     end
   end

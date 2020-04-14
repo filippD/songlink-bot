@@ -21,7 +21,7 @@ class Router
       else 
         Commands::Default
       end
-    when 'supergroup' || 'group'
+    when 'supergroup', 'group'
       if input.text&.match(regex)
         Commands::SendSongLinks
       end
