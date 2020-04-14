@@ -14,22 +14,14 @@ class Router
     regex = Regexp.new(
       'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)'
     )
-    thanks_regex = /спасибо/i
-    # song_sources = Regexp.new('youtube|soundcloud')
     case input.chat.type
     when 'private'
       if input.text&.match(regex)
         Commands::SendSongLinks
-      # elsif input.text&.match(thanks_regex)
-      #   Commands::Thanks
       else 
         Commands::Default
       end
-    when 'supergroup'
-      if input.text&.match(regex)
-        Commands::SendSongLinks
-      end
-    when 'group'
+    when 'supergroup' || 'group'
       if input.text&.match(regex)
         Commands::SendSongLinks
       end
