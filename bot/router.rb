@@ -1,7 +1,6 @@
 require_relative 'commands/default.rb'
 require_relative 'commands/null.rb'
 require_relative 'commands/send_song_links.rb'
-require_relative 'commands/thanks.rb'
 
 class Router
   def call(input)
