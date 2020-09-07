@@ -21,7 +21,7 @@ module Commands
 
     def responses
       if input.from.id == '285328368'
-        Response.new(:send_message, {text: response_for_ed, chat_id: input.chat.id}
+        Response.new(:send_message, {text: response_for_ed, chat_id: input.chat.id})
       else
         links_by_platforms.map do |platform_link|
           Response.new(
@@ -38,7 +38,7 @@ module Commands
 
     private
 
-    attr_reader :links_by_platforms, :user_id
+    attr_reader :links_by_platforms
 
     def markup(platforms)
       required_platforms = {
