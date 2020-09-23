@@ -20,19 +20,15 @@ module Commands
     end
 
     def responses
-      if input.from.id == 285328368
-        [Response.new(:send_message, {text: response_for_ed, chat_id: input.chat.id})]
-      else
-        links_by_platforms.map do |platform_link|
-          Response.new(
-            :send_message,
-              {
-                text: response,
-                chat_id: input.chat.id,
-                reply_markup: markup(platform_link)
-              }
-          )
-        end
+      links_by_platforms.map do |platform_link|
+        Response.new(
+          :send_message,
+            {
+              text: response,
+              chat_id: input.chat.id,
+              reply_markup: markup(platform_link)
+            }
+        )
       end
     end
 
